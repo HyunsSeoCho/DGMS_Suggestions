@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+  <html>
+    <head>
+      <title>개발자 페이지</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <link rel="shortcut icon" href="http://ufprod.iptime.org:8000/etc/dogokepeople/favicon.ico">
+      <style type="text/css">
+        body { background-color: #E0FFDB; }
+      </style>
+    </head>
+    <body>
+      <script>
+      command = prompt("명령어를 입력하세요.");
+      if (command == "취소") {
+        history.back();
+      }
+      else if (command == "테스트") {
+        location.replace("../../../../private/");
+      }
+      else {
+        history.back();
+      }
+      </script>
+    </body>
+  </html>

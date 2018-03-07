@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+      <title>도곡중학교 신문고</title>
+      <a style="color: #489CFF; text-align: left;" href="javascript:window.external.AddFavorite('http://도곡.메인.한국','eDogok - 도곡중학교 신문고')">즐겨찾기에 추가</a>
+      <link rel="shortcut icon" href="./ico/favicon.ico">
+      <style type="text/css">
+        body { background-color: #E0FFD8; }
+        div { text-align: center; font-family: Arial; }
+        .field
+        {
+          text-align: center;
+          border: 2px solid #D4F4FA;
+          border-radius: 10px;
+          box-shadow: 2px 2px 10px 3px gray;
+          background-color: #D4F4FA;
+          font-size:15pt;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          padding-left: 60px;
+          padding-right: 60px;
+          margin: 10px;
+          display: inline-block;
+        }
+        .text { text-align: center; }
+        .loading
+        {
+          text-align: center;
+          color: white;
+          border: 2px solid #D4F4FA;
+          border-radius: 10px;
+          box-shadow: 2px 2px 10px 3px #577FBC;
+          background-color: #6A9CE6;
+          font-size:15pt;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          padding-left: 40px;
+          padding-right: 40px;
+          margin: 5px;
+          display: inline-block;
+        }
+        .footer { font-size: 10pt; font-family: Dotum; color: #888888; }
+        button { font-size: 15px; height: 35px; width: 140px; font-family: Arial; }
+      </style>
+    </head>
+    <body>
+      <br><br>
+      <div class="text" style="font-size:27pt;"> <strong>도곡중학교 온라인 신문고</strong> </div>
+      <div style="text-align: right;"> </div>
+      <br><br>
+      <div>
+        <p><img src="./ico/logo.png" alt="" width="150px"></p>
+        <br>
+        <div class="field">
+          <div id="root_button">
+            <p><strong>eDogok</strong></p>
+            <p><a href="#" onclick="login()"><img src="./ico/로그인.png" alt="로그인" title="로그인" width="170px" /></a></p>
+            <p><a href="#" onclick="info()"><img src="./ico/신문고소개.png" alt="신문고 소개" title="신문고 소개" width="170px" enabled="false"/></a></p>
+            <p><a href="./docs/update/"><img src="./ico/연혁.png" alt="연혁" title="연혁" width="170px" /></a></p>
+          </div>
+          <div id="login_button" style="display: none;">
+            <p><strong>eDogok - Sign In</strong></p>
+            <p><a href="student"><img src="ico/%EC%9E%AC%ED%95%99%EC%83%9D2.png" alt="재학생" title="재학생" width="170px" /></a></p>            <p><a href="Javascript:alert('현재 이 기능은 개발중입니다.');"><img src="ico/%ED%95%99%EB%B6%80%EB%AA%A8%EC%83%81%EB%8B%B4%EC%8B%A0%EC%B2%AD2.png" alt="학부모상담신청" title="학부모상담신청" width="176px" hidden /></a></p>            <p><a href="Authentication";><img src="ico/%EC%84%A0%EC%83%9D%EB%8B%98%EA%B0%9C%EB%B0%9C%EC%9E%90.png" alt="선생님/개발자" title="선생님/개발자" width="170px" /></a></p>          </div>        </div>      </div>
+      <div class="text">
+        <h5>이 페이지는 Windows 7 이상, Chrome 51.0 이상에 최적화되어 있으며 JavaScript 를 사용합니다. Internet Explorer 사용은 권장드리지 않습니다.</h5>
+      </div>
+      <br><br>
+      <div class="footer">
+        Copyright © DSBS - 도곡 학생 방송, All Rights Reserved.
+      </div>
+      <br><br><br><br><br><br><br>
+      <div style="text-align: right;">
+        <a href="http://info.flagcounter.com/834e"><img src="http://s01.flagcounter.com/count/834e/bg_FFFFFF/txt_000000/border_CCCCCC/columns_1/maxflags_5/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>      </div>
+      <br><br>
+    </body>
+  </html>
+
+  <script type="text/javascript">
+  function loaded() {
+     var element = document.getElementById('loading');
+     element.parentNode.removeChild(element);
+  }
+  if(window.addEventListener){
+    window.addEventListener('load', loaded, false);
+  } else {
+    window.attachEvent('onload', loaded);
+  }
+  function login() {
+    document.getElementById('root_button').style.display = 'none';
+    document.getElementById('login_button').style.display = 'block';
+    ShowAlert();
+  }
+    function ShowAlert() {
+      alert("12월 3일 서버 이관 후 재개장으로 인하여 일부 기능의 이용이 어려울 수 있습니다. \n ")
+    }
+  </script>

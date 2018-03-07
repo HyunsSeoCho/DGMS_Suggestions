@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>도곡중학교 신문고</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <link rel="shortcut icon" href="../../ico/favicon.ico">
+	    <script type="text/javascript" src="../../encrypt/logout600.js"></script>
+      <style type="text/css">
+        body { background-color: #E0FFDB; }
+        div { text-align: center }
+        .timer { font-size:15pt; text-align:right; }
+        .text { text-align: center; font-family: NanumGothic; }
+        .footer { font-size:10pt; font-family:Dotum; color:#888888; }
+        button { font-size: 14px; width: 240px; height: 30px; font-family: Arial; }
+      </style>
+      <div class="timer">
+        <strong><span id="counter"> </span> 후 자동 로그아웃</strong> <input type="button" value="연장" onclick="counter_reset()" style="align='center'; height:30px; width:60px; font-size:14px; font-family:NanumGothic;">
+      </div>
+    </head>
+    <body>
+      <div class="text" style="text-size:20pt">
+        <strong>도곡중학교 온라인 신문고 - 선생님 페이지</strong>
+      </div>
+      <br>
+      <div>
+        <p><button onclick="Javascript:location.replace('../docs/survey1/result/index.html');">신문고 결과 보기</button></p>
+        <p><button onclick="Javascript:location.replace('../docs/counsel/result/');">상담 예약 결과 보기</button></p>
+        <p><button onclick="Javascript:location.replace('../docs/update/');">연혁 보기</button></p>
+        <p><button onclick="Javascript:window.open('http://nid.naver.com/nidlogin.login?mode=form&url=http://note.naver.com/note/sendForm.nhn?targetUserId=raykim123&svcType=1&popup=1');">수정 사항 제안</button></p>
+        <p><button onclick="Javascript:location.replace('../../');" style="width:80px;">로그아웃</button></p>
+      </div>
+      <br /><br /><br />
+      <div class="footer">
+        Copyright &copy; DSBS - 도곡 학생 방송, All Rights Reserved.
+      </div>
+    </body>
+  </html>
+  <script>
+  counter_init();
+  </script>
