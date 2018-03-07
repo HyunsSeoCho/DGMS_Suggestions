@@ -1,0 +1,786 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>객실예약</title>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="title" content="" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+<link rel="stylesheet" type="text/css" href="/irsweb/resort3/app/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/irsweb/resort3/app/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="/irsweb/resort3/app/css/widget.css" />
+<link rel="stylesheet" type="text/css" href="/irsweb/resort3/app/css/ui.css" />
+
+<script type="text/javascript" src="/irsweb/resort3/app/js/lib/jquery-1.8.0.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/lib/jquery-easing.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/HNR.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/HNR.Legacy.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/HNR.Gnb.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/HNR.Lnb.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/HNR.Popup.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/experJS/exper.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/HNR.Utils.js"></script>
+
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/jquery-ui-1.10.2.custom.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/common.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/common_dev.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/pager.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/validate.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/jquery.common.js"></script>
+<!-- <script type="text/javascript" src="/irsweb/resort3/app/js/com/session_keep.js"></script> -->
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/jquery.number.min.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/resort3.js"></script>
+<script type="text/javascript" src="/irsweb/resort3/app/js/com/widgets.js"></script>
+
+<script type="text/javascript">
+	(function(){
+		if (window.console && window.console.log) {
+		} else {
+			window.console = {};
+			window.console.log = function(){};
+		}
+	})();
+	
+	var urlPathDepthCnt = location.pathname.split("/").length;
+	
+	if (urlPathDepthCnt == 6) {
+		EX.includeBegin("../../app/js/experJS");
+	} else if (urlPathDepthCnt == 5) {
+		EX.includeBegin("../app/js/experJS");
+	} else if (urlPathDepthCnt == 4) {
+		EX.includeBegin("./app/js/experJS");
+	}
+	
+	EX.include("events/EXEventListener");
+	EX.include("ui/EXSelectBox");
+	EX.include("ui/EXRadioButton");
+	EX.include("ui/EXCheckBox");
+	EX.include("transitions/EXTween");
+	EX.include("transitions/EXEasing");
+	EX.ready(function(){
+		EXSelectBox.init("ui_select");
+		EXRadioButton.init("ui_radio");
+		EXCheckBox.init("ui_check");
+	});
+
+	$(document).ready(function(){
+		HNR.initFontUtil();
+		HNR.initFooter();
+		HNR.initPlaceHolder(".ui_placeholder");
+		
+		// 기간계(닷넷)가 iframe 으로 들어감에 따라 해당 iframe 을 관리하기 위한 객체.
+		HNR.Legacy.init();
+	});
+
+	function logoutConfirm() {
+		return confirm("로그아웃 하시겠습니까?\n로그아웃시 메인페이지로 이동합니다.");
+	}
+</script>
+
+<link rel="stylesheet" type="text/css" href="/irsweb/resort3/app/css/utils.css" />
+<script type="text/javascript">
+    (function() {
+        HNR.Lnb.setActiveCode(1, 0);
+    })();
+</script>
+</head>
+<body class="layout-rnb reserve remain_inquiry">
+ 	<div id="layerWrapper"></div>
+
+	<div class="skip_navi">
+		<a href="#cmBody"><span>본문 바로보기</span></a>
+		<a id="skipCmRnb" href="#cmRnb"><span>우측 메뉴 바로보기</span></a>
+	</div>
+
+	<!-- (s) #cmWrap 레이아웃 컨테이너-->
+	<div id="cmWrap">
+
+		<!-- (s) #cmHead 레이아웃 헤더 -->
+		<div id="cmHead">
+			<!-- (s) .cm_pivot -->
+			<div class="cm_pivot">
+
+
+				<!-- (s) .gnb_menu -->
+				<div class="cm_gnb">
+					<h1 class="logo">
+						<a href="/irsweb/resort3/index.asp">한화리조트</a>
+					</h1>
+
+					<div class="round_border">
+						<div class="bd_top"></div>
+						<div class="bd_height"></div>
+						<div class="bd_bottom"></div>
+						<div class="util_bg"></div>
+						<div class="dp1_arrow"><span>&nbsp;</span></div>
+					</div>
+
+					<h2 class="blind-text">한화리조트 통합사이트 전체메뉴</h2>
+					<div class="bar ">
+						<div class="depth1">
+							<ul>
+								<li class="dp1 reserv" data-openHeight="377"><a href="#"><span>통합예약</span></a>
+									<div class="open_menu">
+										<div class="depth2 m1">
+											<a class="dp2_a" href="#">온라인예약</a>
+											<ul class="depth3 c1">
+												<li><a href="/irsweb/resort3/reserve/rsv_room_list.asp">객실예약</a></li>
+												<li><a href="/irsweb/resort3/mypage/rsv_inquiry.asp">예약조회/변경/취소</a></li>
+                                    
+												<li><a href="/irsweb/resort3/reserve/rsv_package.asp">패키지예약</a></li>
+											</ul>
+											<ul class="depth3 c2">
+												<li><a href="/irsweb/resort3/reserve/rsv_coupon.asp">쿠폰예약</a></li>
+                                   <!-- -->
+												<li><a href="/irsweb/resort3/reserve/rsv_rentcar.asp">렌터카예약</a></li>
+
+												<li><a href="/irsweb/resort3/reserve/rsv_bus.asp" class="">정기버스예약</a></li>
+											</ul>
+										</div>
+										<div class="depth2 m2">
+											<a class="dp2_a" href="/irsweb/resort3/mypage/lott_main.asp">추첨접수</a>
+											<ul class="depth3">
+												<li><a href="/irsweb/resort3/mypage/lott_main.asp">추첨접수</a></li>
+												<li><a href="/irsweb/resort3/mypage/lott_inquiry.asp">추첨접수조회/변경/취소</a></li>
+												<li><a href="/irsweb/resort3/mypage/lott_result.asp">추첨결과보기</a></li>
+												<li><a href="/irsweb/resort3/mypage/lott_main.asp">추첨일정표</a></li>
+												<li><a href="/irsweb/resort3/mypage/lott_main2.asp">추첨접수방법</a></li>
+												<li><a href="/irsweb/resort3/mypage/lott_main3.asp">추첨배정기준</a></li>
+												<!--<li><a href="#">추첨등급/점수조회</a></li>-->
+											</ul>
+										</div>
+										<div class="depth2 m3"><a class="dp2_a" href="/irsweb/resort3/reserve/remain_inquiry.asp">잔여객실조회</a></div>
+										<div class="depth2 m4"><a class="dp2_a" href="/irsweb/resort3/reserve/rsv_buffet.asp">조식뷔페예약</a></div>
+										<div class="depth2 m5"><a class="dp2_a" href="/irsweb/resort3/reserve/rsv_tp_water.asp">테마파크 입장권예매</a></div>
+										<div class="depth2 m6"><a class="dp2_a" href="/irsweb/resort3/utils/total_weather.asp">날씨정보</a></div>
+										<div class="t_shape"></div>
+									</div>
+								</li>
+
+
+								<li class="dp1 resort" data-openHeight="377"><a href="#"><span>리조트&amp;테마파크</span></a>
+									<div class="open_menu">
+										<div class="depth2 m1">
+											<a class="dp2_a" href="#">리조트</a>
+											<ul class="depth3 c1">
+											
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=0101">설악 쏘라노</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=0100">설악 별관</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=0200">백암온천</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=0300">지리산</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=0400">용인 베잔송</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=0500">양평</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=0600">수안보온천</a></li>
+												
+											</ul>
+											<ul class="depth3 c2">
+											
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=0700">산정호수 안시</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=0800">해운대 티볼리</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=0900">대천 파로스</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=1000">경주</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=1100">제주</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/rs_room.asp?bp_cd=1600">휘닉스파크</a></li>
+												
+												<li><a href="/irsweb/resort3/resort/sipan/rs_room.asp?bp_cd=1900">사이판 월드리조트</a></li>
+												
+											</ul>
+										</div>
+
+										<div class="depth2 m2">
+											<a class="dp2_a" href="#">테마파크</a>
+											<ul class="depth3 c1">
+												<li class="water"><a href="/irsweb/resort3/tpark/tp_intro.asp?tp_cd=0100">설악 워터피아</a></li>
+												<li class="jdgd"><a href="/irsweb/resort3/tpark/tp_intro.asp?tp_cd=0400">제이드가든</a></li>
+												<li><a href="/irsweb/resort3/tpark/tp_intro.asp?tp_cd=0200">설악 씨네라마</a></li>
+												<li><a href="/irsweb/resort3/tpark/tp_intro.asp?tp_cd=0300">경주 스프링돔</a></li>
+												<li><a href="/irsweb/resort3/tpark/tp_intro.asp?tp_cd=0500">로얄새들 승마클럽</a></li>
+												<li><a href="/irsweb/resort3/tpark/square_tp_intro.asp">63스퀘어</a></li>
+												<li><a href="/irsweb/resort3/tpark/camp_tp_intro.asp">글램핑&amp;카라반ZONE</a></li>
+											</ul>
+											<ul class="depth3 c2">
+												<li><a href="/irsweb/resort3/tpark/aqua_tp_intro.asp">아쿠아플라넷</a></li>
+												<li><a href="/irsweb/resort3/tpark/golf_tp_intro.asp">플라자CC</a></li>
+												<li><a href="/irsweb/resort3/tpark/golf_tp_intro.asp">제이드팰리스 골프클럽</a></li>
+												<li><a href="/irsweb/resort3/tpark/golf_tp_intro.asp">골든베이 골프&amp;리조트</a></li>
+												<li><a href="/irsweb/resort3/tpark/golf_tp_intro.asp">오션팰리스 골프클럽&amp;리조트</a></li>
+												<li><a href="/irsweb/resort3/tpark/mesuem_tp_intro.asp">대천 파로스 박물관은 살아있다</a></li>
+												<!--<li><a href="/irsweb/resort3/event/event_view.asp?et_seq=107&schMore=1&schTp=&schBpCd=">한화 트래블패스 (연간회원권)</a></li>-->
+											</ul>
+										</div>
+
+										<div class="depth2 m3">
+											<a class="dp2_a" href="#">제휴리조트</a>
+											<ul class="depth3 c1">
+												<li><a href="/irsweb/resort3/alliance/bpark/rsa_room.asp">보광휘닉스파크</a></li>
+												<li><a href="/irsweb/resort3/alliance/elysian/rsa_room.asp">강원 엘리시안 강촌</a></li>
+												<!--<li><a href="/irsweb/resort3/alliance/odjhotel/rsa_intro.asp">경도리조트/오동제 한옥</a></li>-->
+												<li><a href="/irsweb/resort3/alliance/admiral/rsa_room.asp">경상 애드미럴 호텔</a></li>
+											<!--	<li><a href="/irsweb/resort3/alliance/ysjhotel/rsa_intro.asp">영산재 한옥/해남땅끝마을</a></li>-->
+												<li><a href="/irsweb/resort3/alliance/mines/rsa_room.asp">MINES 리조트</a></li>
+												<li><a href="/irsweb/resort3/alliance/rci/rsa_intro.asp">RCI</a></li>
+											</ul>
+											<ul class="depth3 c2">
+												
+												<li><a href="/irsweb/resort3/alliance/jinjiang/rsa_intro.asp">진장 국제호텔</a></li>
+												<li><a href="/irsweb/resort3/alliance/khaolak/rsa_intro.asp">Khaolak(동남아시아)</a></li>
+											</ul>
+										</div>
+
+										<div class="t_shape"></div>
+									</div>
+								</li>
+								<li class="dp1 story" data-openHeight="247"><a href="#"><span>리조트 스토리</span></a>
+									<div class="open_menu">
+										<div class="depth2 m1"><a class="dp2_a" href="/irsweb/resort3/story/st_issuein.asp">이슈 인 리조트</a>
+											<div class="dp2_desc">
+												여행, 바캉스, 캠핑, 맛집 등 
+												<br/>다양한 정보와 이야기를 
+												<br/>들어보세요.
+											</div>
+										</div>
+										<!--<div class="depth2 m2"><a class="dp2_a" href="/irsweb/resort3/story/st_planner.asp">테마추천일정</a>
+											<div class="dp2_desc">
+												어디갈까? 무엇을 먹을까? 
+												<br/>고민되시죠?
+												<br/>이제 한화리조트가 여행의 
+												<br/>길잡이가 되어 드립니다.
+											</div>
+										</div>-->
+										<div class="depth2 m3"><a class="dp2_a" href="/irsweb/resort3/resort_plan/resort_main.asp">마이트립플래너</a>
+											<div class="dp2_desc">
+												리조트 주변 관광지 정보로
+												<br>일정표를 만드는
+												<br>스마트한 여행 가이드입니다.
+											</div>
+										</div>
+										<div class="depth2 m5"><a class="dp2_a" href="/irsweb/resort3/story/st_menupan.asp">주변맛집 TOP10 </a>
+											<div class="dp2_desc">
+												메뉴판닷컴에서 추천받은<br />
+												리조트 주변 맛집을<br />
+												소개합니다.
+											</div>
+										</div>
+										
+										<div class="depth2 m4"><a class="dp2_a" href="/irsweb/resort3/story/st_life.asp">리조트 라이프</a>
+											<div class="dp2_desc">
+												한화리조트 소식지로 여행의<br />
+												즐거움을 더하세요.
+											</div>
+										</div>
+										<!--
+										<div class="depth2 m3"><a class="dp2_a" href="/irsweb/resort3/story/st_photos.asp">추억저장소</a>
+											<div class="dp2_desc">
+												테마에 맞추어 사진을 찍고
+												<br/>SNS에 등록 후 태그하여
+												<br/>푸짐한 상품을 받아가세요.
+											</div>
+										</div>
+										-->
+									</div>
+								</li>
+								<li class="dp1 event" data-openHeight="200"><a href="/irsweb/resort3/event/event_list.asp"><span>이벤트&amp;패키지&amp;쿠폰</span></a>
+									
+									<div class="open_menu">
+										<div class="depth2 m1"><a class="dp2_a" href="/irsweb/resort3/event/event_list.asp">이벤트 &amp; 패키지</a>
+											<div class="dp2_desc">
+												리조트 여행 준비중이세요?<br />
+												다양한 혜택과 이벤트 확인하고 떠나세요.
+											</div>
+										</div>
+										<div class="depth2 m2"><a class="dp2_a" href="/irsweb/resort3/event/event_coupon.asp">온라인쿠폰</a>
+											<div class="dp2_desc">
+												온라인에서만 드리는 특별한 혜택으로<br />
+												스마트한 여행 준비 하세요.
+											</div>
+										</div>
+									</div>
+								</li>
+								
+								<li class="dp1 group"><a href="/irsweb/resort3/group/facilities.asp"><span>단체행사 안내</span></a></li>
+								<li class="dp1 mship"><a href="http://member.hanwharesort.co.kr/index.asp" target="_blank" title="새창"><span>회원권 분양</span></a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<!-- (e) .gnb_menu -->
+				
+				<hr />
+				
+				<!-- (s) .util_menu -->
+				<div class="util_menu">
+					<h3 class="blind-text">한화리조트 통합사이트 유틸메뉴</h3>
+					<ul class="menu">
+						
+
+						<!-- (s) 로그인 상태  -->
+						
+						<li class="logout">
+							<a href="/irsweb/resort3/member/logout.aspx" onclick="return logoutConfirm();">로그아웃</a>
+						</li>
+
+						<!-- (e) 로그인 상태  -->
+						
+
+						<li class="reserve">
+							<a href="/irsweb/resort3/mypage/rsv_inquiry.asp">예약확인/취소</a>
+						</li>
+						<li class="news">
+							<a href="/irsweb/resort3/utils/news_list.asp">뉴스</a>
+						</li>
+						<li class="build">
+							<a href="/irsweb/resort3/service/condo_able.asp">분양회원 서비스</a>
+						</li>
+						<li class="center">
+							<a href="/irsweb/resort3/customer/faq.asp">고객센터</a>
+						</li>
+					</ul>
+					<script type="text/javascript">
+						function totSearchCheckForm() {
+							var f = document.totSearchForm
+							if ($.trim($("input[id='schTxtTop']").val()) == "") {
+								alert("검색어를 입력하세요");
+								$("input[id='schTxtTop']").focus();
+								return false;
+							}
+							return true;
+						}
+					</script>
+					<form name="totSearchForm" action="/irsweb/resort3/utils/total_search.asp" method="get" onsubmit="return totSearchCheckForm();">
+					<div class="search">
+						<label class="blind-text" for="schTxtTop">검색어</label>
+						<input class="txt" id="schTxtTop" name="schTxt" type="text" />
+						<input class="sbm" type="submit" value="검색"/>
+					</div>
+					</form>
+				</div>
+				<!-- (e) .util_menu -->
+			</div>
+			<!-- (e) .cm_pivot -->
+		</div>
+		<!-- (e) #cmHead 레이아웃 헤더 -->
+
+		<hr />
+
+		<!-- (s) #cmBody 레이아웃 바디 -->
+		<div id="cmBody">
+	<script>
+		$('#profile_box_btn').mouseover(function(){
+			$('#profile_box').show();
+		});
+		$('#profile_box_btn').mouseout(function(){
+			$('#profile_box').hide();
+		});
+
+		$('#profile_box').mouseover(function(){
+			$('#profile_box').show();
+		});
+		$('#profile_box').mouseout(function(){
+			$('#profile_box').hide();
+		});
+
+
+
+var data = "mb_srl=";
+			$.ajax({
+				 type: 'POST',
+				 url: '/irsweb/resort3/resort_plan/get_scrap_cnt.asp', 
+				 data: data,
+				 success: function(data){
+					//alert(data);
+$("#profile_inbox_counter").html(data);
+				 },
+			     error:function(request,status,error){
+				       //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			 	}
+			});
+
+	</script>
+<div class="cm_pivot location">
+	<!-- (s) .cm_title -->
+	<div class="cm_title">
+		<div class="tit">
+			<h2>
+			<img src="../app/images/tit/reserve/rsv_room.gif" alt="객실예약" />
+			</h2>
+		</div>
+		<div class="loc">
+			<strong class="blind-text">현재 문서의 위치</strong>
+			<div class="at">
+				<span class="home"><a href="/">Home</a></span>
+				<span><a href="#">통합예약</a></span>
+				<span><a href="#">온라인예약</a></span>					
+				<strong><a href="#">객실예약</a></strong>
+			</div>
+		</div>
+		<hr />
+	</div>
+  
+	<!-- (e) .cm_title -->
+	<div class="cm_top_utils">
+		<div class="pivot">
+			<strong class="blind-text">문서 기능</strong>
+			<div class="print_util">
+				<a href="#">본문인쇄</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- (s) .cm_pivot.content 본문 -->
+
+<div class="cm_pivot content">
+	<!-- (s) .cm_content 본문영역 -->
+	<div class="cm_content target-font-size" >
+		<iframe id="dotnetContainer" class="dotnet_container" src="./rsv_room_list.aspx" frameborder="0" scrolling="no" title="객실예약"></iframe>
+	</div>
+	<!-- (e) .cm_content 본문영역 -->
+	<div class="cm_rnb">
+  <style type="text/css">
+    .cm_snb .depth2 li a { text-indent:-9999px; background:url("../app/images/common/lnb_reserv_dp1.png") no-repeat; }
+    .cm_snb .depth2 .m2 .depth3 li a { text-indent:-9999px; background-image:url("../app/images/common/lnb_reserv_dp2_m2.png"); }
+    .cm_snb .depth2 .m3 .depth3 li a { text-indent:-9999px; background-image:url("../app/images/common/lnb_reserv_dp2_m3.png"); }
+  </style>
+
+  <div class="cm_snb">
+    <ul class="menus depth2">
+      <li class="m1">
+        <a href="/irsweb/resort3/reserve/remain_inquiry.asp">잔여객실조회</a>
+      </li>
+      <li class="m2">
+        <a href="#">온라인예약</a>
+        <ul class="depth3">
+          <!--
+								<li class="s1"><a href="/irsweb/resort3/reserve/rsv_room.asp">객실예약</a></li>
+								<li class="s2"><a href="/irsweb/resort3/reserve/rsv_alliance.asp">제휴리조트 예약</a></li>
+								<li class="s3"><a href="/irsweb/resort3/reserve/rsv_saipan.asp">사이판 월드리조트 예약</a></li>
+								<li class="s4"><a href="/irsweb/resort3/reserve/rsv_package.asp">패키지예약</a></li>
+								<li class="s5"><a href="/irsweb/resort3/reserve/rsv_coupon.asp">쿠폰예약</a></li>
+								<li class="s6"><a href="/irsweb/resort3/reserve/rsv_anniv.asp">기념일예약</a></li>
+								<li class="s7"><a href="/irsweb/resort3/reserve/rsv_rentcar.asp">렌터카예약</a></li>
+								<li class="s8"><a href="/irsweb/resort3/reserve/rsv_division.asp">객실나누기</a></li>
+								<li class="s9"><a href="/irsweb/resort3/reserve/rsv_bus.asp">정기버스예약</a></li>
+								-->
+          <li class="s1">
+            <a href="/irsweb/resort3/reserve/rsv_room_list.asp">객실예약</a>
+          </li>
+          <li class="s2">
+            <a href="/irsweb/resort3/mypage/rsv_inquiry.asp">예약조회/변경/취소</a>
+          </li>
+          <li class="s5">
+            <a href="/irsweb/resort3/reserve/rsv_package.asp">패키지예약</a>
+          </li>
+          <li class="s6">
+            <a href="/irsweb/resort3/reserve/rsv_coupon.asp">쿠폰예약</a>
+          </li>
+          <li class="s8">
+            <a href="/irsweb/resort3/reserve/rsv_rentcar.asp">렌터카예약</a>
+          </li>
+		  <li class="s9">
+            <a href="/irsweb/resort3/reserve/rsv_bus.asp">정기버스예약</a>
+          </li>
+ 
+        </ul>
+      </li>
+      <li class="m3">
+        <a href="#">추첨접수</a>
+        <ul class="depth3">
+          <li class="s1">
+            <a href="/irsweb/resort3/mypage/lott_main.asp">추첨접수</a>
+          </li>
+          <li class="s2">
+            <a href="/irsweb/resort3/mypage/lott_inquiry.asp">추첨접수 조회/변경/취소</a>
+          </li>
+          <li class="s3">
+            <a href="/irsweb/resort3/mypage/lot_result.asp">추첨결과보기</a>
+          </li>
+          <li class="s4">
+            <a href="/irsweb/resort3/mypage/lot_guide.asp">추첨일정표</a>
+          </li>
+          <li class="s5">
+            <a href="/irsweb/resort3/mypage/lot_guide.asp">추첨배정기준</a>
+          </li>
+          <li class="s6">
+            <a href="/irsweb/resort3/mypage/lot_guide.asp">추첨접수방법</a>
+          </li>
+        </ul>
+      </li>
+      <li class="m4">
+        <a href="/irsweb/resort3/reserve/rsv_buffet.asp">조식뷔페예약</a>
+      </li>
+      <li class="m5">
+        <a href="/irsweb/resort3/reserve/rsv_tp_water.asp">테마파크 입장권예매</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+<!-- (e) .cm_pivot.content 본문 -->
+
+
+		</div>
+		<!-- (e) #cmBody 레이아웃 바디 -->
+
+		<hr />
+
+
+
+
+
+		<!-- (s) #cmFoot 레이아웃 푸터 -->
+		<div id="cmFoot">
+			<div class="pattern"></div>
+			
+			<div class="skip_navi">
+				<a href="#cmBody"><span>본문 다시보기</span></a>
+			</div>
+
+
+			<!-- (s) .cm_pivot -->
+			<div class="cm_pivot">		
+				<!-- (s) .site_menu 하단 사이트맵 -->		
+				<div class="site_menu">
+					<span class="blind-text">바로가기 메뉴</span>
+					<div class="sitemap resort">
+						<div class="tit">
+							<strong>Resort</strong>
+						</div>
+						<ul class="menu m1">
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=0101">설악 쏘라노</a></li>
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=0100">설악 별관</a></li>
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=0200">백암온천</a></li>
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=0300">지리산</a></li>
+							
+						</ul>
+						<ul class="menu m2">
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=0400">용인 베잔송</a></li>
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=0500">양평</a></li>
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=0600">수안보온천</a></li>
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=0700">산정호수 안시</a></li>
+							
+						</ul>
+						<ul class="menu m3">
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=0800">해운대 티볼리</a></li>
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=0900">대천 파로스</a></li>
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=1000">경주</a></li>
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=1100">제주</a></li>
+							
+						</ul>
+						<ul class="menu m4">
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=1600">휘닉스파크</a></li>
+							
+								<li><a href="/irsweb/resort3/resort/rs_intro.asp?bp_cd=1900">사이판 월드리조트</a></li>
+							
+							<li class="rsbtn internal" >
+								<a class="btn" href="javascript:;">국내 제휴 리조트<span class="icon"></span></a>
+								<div class="optional">
+									<div class="bd_left"></div>
+									<ul class="group">
+										<li><a href="/irsweb/resort3/alliance/bpark/rsa_room.asp">보광휘닉스파크</a></li>
+										<li><a href="/irsweb/resort3/alliance/elysian/rsa_room.asp">강원 엘리시안 강촌</a></li>
+										<!--<li><a href="/irsweb/resort3/alliance/odjhotel/rsa_intro.asp">경도리조트/오동제 한옥</a></li>-->
+										<li><a href="/irsweb/resort3/alliance/admiral/rsa_room.asp">경상 애드미럴 호텔</a></li>
+										<!--<li><a href="/irsweb/resort3/alliance/ysjhotel/rsa_intro.asp">영산재 한옥/해남땅끝마을</a></li>-->
+									</ul>
+								</div>
+							</li>
+							<li class="rsbtn external" >
+								<a class="btn" href="javascript:;">해외 제휴 리조트<span class="icon"></span></a>
+								<div class="optional">
+									<div class="bd_left"></div>
+									<ul class="group">
+										<!--<li><a href="/irsweb/resort3/alliance/cryun/rsa_intro.asp">중국/천륜콘도</a></li>-->
+										<li><a href="/irsweb/resort3/alliance/mines/rsa_room.asp">MINES 리조트</a></li>
+										<li><a href="/irsweb/resort3/alliance/rci/rsa_intro.asp">RCI</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="sitemap tpark">
+						<div class="tit">
+							<strong>Theme Park</strong>
+						</div>
+						<ul class="menu m1">
+							<li><a href="/irsweb/resort3/tpark/tp_intro.asp?tp_cd=0100">설악 워터피아</a></li>
+							<li><a href="/irsweb/resort3/tpark/tp_intro.asp?tp_cd=0200">설악 씨네라마</a></li>
+							<li><a href="/irsweb/resort3/tpark/tp_intro.asp?tp_cd=0300">경주 스프링돔</a></li>
+							<li><a href="/irsweb/resort3/tpark/aqua_tp_intro.asp">아쿠아플라넷</a></li>
+						</ul>
+						<ul class="menu m2">
+							<li><a href="/irsweb/resort3/tpark/tp_intro.asp?tp_cd=0400">제이드가든</a></li>
+							<li><a href="/irsweb/resort3/tpark/tp_intro.asp?tp_cd=0500">로얄새들 승마클럽</a></li>
+							<li><a href="http://www.plazacc.co.kr" target="_blank">플라자CC</a></li>
+						</ul>
+						<ul class="menu m3">
+							<li><a href="http://www.jadepalacegc.com/" target="_blank" title="새창">제이드팰리스 골프클럽</a></li>
+							<li><a href="http://www.goldenbay.kr/" target="_blank" title="새창">골든베이 골프&amp;리조트</a></li>
+							<li><a href="http://www.oceanpalacegc.com" target="_blank" title="새창">오션팰리스 골프클럽&amp;리조트</a></li>
+						</ul>
+						<ul class="menu m4">
+							<li><a href="/irsweb/resort3/tpark/square_tp_intro.asp">63스퀘어</a></li>
+							<li><a href="/irsweb/resort3/tpark/mesuem_tp_intro.asp">박물관은 살아있다</a></li>
+							<li><a href="/irsweb/resort3/tpark/camp_tp_intro.asp">글램핑&amp;카라반 ZONE</a></li>
+						</ul>
+					</div>
+
+					<div class="contact">
+						<ul class="social">
+							<li class="fb"><a href="https://www.facebook.com/hanwhahotelandresort" target="_blank" title="새창">Like us</a></li>
+							<!--<li class="tw"><a href="https://twitter.com/hanwharesort24" target="_blank" title="새창">Follow us</a></li>-->
+							<li class="ts"><a href="http://hanwharesort.tistory.com/" target="_blank" title="새창">블로그</a></li>
+						</ul>
+						<div class="center">
+							<img src="/irsweb/resort3/app/images/common/foot_cscenter.png" alt="고객센터 1588-2299" />
+						</div>
+					</div>
+
+				</div>
+				<!-- (e) .site_menu 하단 사이트맵 -->	
+
+				<!-- (s) .foot_menu 하단 메뉴 -->	
+				<div class="foot_menu">
+					<div class="menus">
+						<ul>
+							<li><a href="http://www.hwrc.co.kr/about/overview.asp" target="_blank" title="새창">회사소개</a></li>
+							<li><a href="http://www.hwrc.co.kr/recruit/helper_recruit.asp" target="_blank" title="새창">채용안내</a></li>
+							<li><a href="http://www.hwrc.co.kr/social/overview.asp" target="_blank" title="새창">사회공헌</a></li>
+							<li><a href="/irsweb/resort3/utils/agreement.asp">이용약관</a></li>
+							<li><a href="/irsweb/resort3/utils/policy.asp"><b>개인정보처리방침</b></a></li>
+							<li><a href="/irsweb/resort3/utils/policy_img.asp"><b>영상정보처리기기 운영∙관리 방침</b></a></li>
+						</ul>
+					</div>
+					<div class="menus">
+						<ul>
+							<li><a href="/irsweb/resort3/utils/legal.asp">법적고지</a></li>
+							<li><a href="/irsweb/resort3/utils/nomail.asp">이메일무단수집거부</a></li>
+							<li><a href="/irsweb/resort3/member/cond_log_in_emp.asp">인트라넷</a></li>
+						</ul>
+					</div>
+
+					<!-- (s) .ext_menu 확장 메뉴 -->
+					<div class="ext_menu">
+						<label class="blind-text" for="forFootLang">다국어 사이트 바로가기</label>
+						<select id="forFootLang" class="ui_select id-lang">
+							<option value="#none">언어 Language</option>
+							<option value="/irsweb/resort3/eng/index.asp">영어 English</option>
+							<option value="/irsweb/resort3/jpn/index.asp">일본어 日本語</option>
+							<option value="/irsweb/resort3/chn/index.asp">중국어 简体中文</option>
+						</select>
+						<a class="ui_button lang" href="javascript:;" title="선택한 언어사이트 새창열기" target="_blank">GO</a>
+
+						<label class="blind-text" for="forFootFam">관련 사이트 바로가기</label>
+						<select id="forFootFam" class="ui_select id-family">
+							<option value="#none">Family site</option>
+
+							<option value="http://www.hanwha.co.kr">한화그룹</option>
+							<option value="http://www.hwrc.co.kr">한화호텔&리조트㈜</option>
+							<option value="http://member.hanwharesort.co.kr">분양사이트</option>
+							<option value="http://www.plazacc.co.kr">플라자CC</option>
+							<option value="http://www.goldenbay.kr">골든베이 GR</option>
+							<option value="http://www.jadepalacegc.com">제이드팰리스 GC</option>
+							<option value="http://www.hoteltheplaza.com">THE PLAZA</option>
+							<option value="http://www.hanwhafoodist.com">푸디스트</option>
+							<option value="http://www.aquaplanet.co.kr">아쿠아플라넷</option>
+							<option value="http://www.63.co.kr">63스퀘어</option>
+							<option value="http://www.63restaurant.co.kr">63레스토랑</option>
+							<option value="http://www.t-won.com/">티원</option>
+						</select>
+						<a class="ui_button fam" href="javascript:;" target="_blank" title="선택한 패밀리사이트 새창열기">GO</a>
+
+					</div>
+					<!-- (e) .ext_menu 확장 메뉴 -->
+				</div>
+				<!-- (e) .foot_menu 하단 메뉴 -->	
+
+				<!-- (s) .addr 주소 -->
+				<div class="addr">
+					<address>한화호텔앤드리조트(주) 서울특별시 영등포구 63로 50(여의도동)  (우)07345 　　 대표자 : 문석</address>
+					<span class="tel">Tel 1588-2299</span>
+					<span class="fax">Fax 02-789-5525</span><br />
+					<span class="copyright">Copyright@ Hanwha Hotels & Resorts. All Rights Reserved.</span>
+					<span class="addr_1">사업자등록번호 : 101-81-30747</span>
+					<span class="addr_2">통신판매업 신고번호 : 2015-서울영등포-0907</span>
+				</div>
+				<!-- (e) .addr 주소 2010-서울중구-0153 -->
+
+				<a class="scroll_top blind-text" href="javascript:;">문서 맨위로 가기</a>
+
+			</div>
+			<!-- (e) .cm_pivot -->
+		</div>
+		<!-- (e) #cmFoot 레이아웃 푸터 -->
+		
+	</div>
+	<!-- (e) #cmWrap 레이아웃 컨테이너 -->
+
+<script type="text/javascript">
+EX.includeEnd();
+/*
+$(document).ready(function(){
+	HNR.Gnb.init();
+	HNR.Lnb.init();
+});
+*/
+EX.ready(function(){
+	HNR.Gnb.init();
+	HNR.Lnb.init();
+});
+</script>
+
+<!-- google analytics script -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43642913-1', 'hanwharesort.co.kr');
+  ga('send', 'pageview');
+</script>
+
+<form name="loginSubmit" action="/irsweb/resort3/member/login.asp" method="post">
+</form>
+</body>
+</html>
+
+<!-- naver analytics script -->
+<script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "95b416ec58a230";
+wcs_do();
+</script>

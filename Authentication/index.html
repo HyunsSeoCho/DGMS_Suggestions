@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>로그인</title>
+      <link rel="stylesheet" href="css/normalize.css">
+    	<link rel="stylesheet" href="css/style.css">
+      <script>
+        function clock() {
+        	var hours = t.getHours();
+        	var min = t.getMinutes();
+          	document.clock.hours.value = units.substring(0, hours);
+          	document.clock.minutes.value = units.substring(0, min);
+        		if (min < 10)
+        			min = "0" + min;
+        		window.setTimeout("clock()", 900);
+          }
+          function processKey()
+            {
+            if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) ||
+            (event.keyCode >= 112 && event.keyCode <= 123) || event.keyCode == 8)
+              {
+                event.keyCode = 0;
+                event.cancelBubble = true;
+                event.returnValue = false;
+              }
+            }
+          document.onkeydown = processKey;
+          var message="";
+          function clickIE() {
+          	if (document.all) {(message);return false;}
+          	}
+          function clickNS(e) {
+          	if (document.layers||(document.getElementById&&!document.all)) {
+          	if (e.which==2||e.which==3) {(message);return false;}}}
+          	if (document.layers) {
+          		document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;}
+          	else {
+          		document.onmouseup=clickNS;document.oncontextmenu=clickIE;}
+          		document.oncontextmenu=new Function("return false")
+      </script>
+    </head>
+    <body>
+      <div id="stage">
+        <div id="switch"><a href="#" data-color="white">WHITE</a><a href="#" data-color="black">BLACK</a></div>
+        <div id="iphone-6"><span class="power"></span><span class="volume-switch"></span><span class="volume-plus"></span><span class="volume-minus"></span><span class="line-top"></span><span class="line-bottom"></span><span class="camera"></span><span class="speaker"></span><span class="home"><a href="#"></a></span>
+          <div class="screen">
+            <div class="topbar">
+              <div class="signal"><span class="full"></span><span class="full"></span><span class="full"></span><span></span><span></span>eDogok/DSBS</div>
+              <div class="time" name="time"> <label name="hours" />:<label name="min" /></div>
+              <div class="battery"></div>
+            </div>
+            <div class="loading"><img src="./image/apple-logo.png" alt=""/></div>
+            <div class="lock">
+              <div class="blur"></div>
+              <div class="text">Touch ID 또는 암호 입력</div>
+              <div class="pills"><span></span><span></span><span></span><span></span></div>
+              <div class="keyboard">
+                <div class="number"><em>1</em></div>
+                <div class="number"><em>2</em><span>ABC</span></div>
+                <div class="number last"><em>3</em><span>DEF</span></div>
+                <div class="number"><em>4</em><span>GHI</span></div>
+                <div class="number"><em>5</em><span>JKL</span></div>
+                <div class="number last"><em>6</em><span>MNO</span></div>
+                <div class="number"><em>7</em><span>PQRS</span></div>
+                <div class="number"><em>8</em><span>TUV</span></div>
+                <div class="number last"><em>9</em><span>WXYZ</span></div>
+                <div class="number center"><em>0</em></div>
+              </div>
+              <div class="emergency"><label onclick="Javascript:alert('긴급 상황이 발생하였습니다!');" style="cursor: pointer;">긴급 상황</label></div>
+              <div class="delete"><a onclick="Javascript:location.replace('../');" style="cursor: pointer;">취소</a></div>
+            </div>
+            <div data-parallaxify-range-x="100" data-parallaxify-range-y="100" class="wallpaper"></div>
+            <div class="overlay">
+              <div class="alert">
+                <div class="text"><strong>알림</strong>이 기능은 이용할 수 없습니다.</div><a href="#">승인</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src='./js/jquery.parallaxify.min.js'></script>
+      <script src="js/index.js"></script>
+      <script src="js/passcode.js"></script>
+      <script>
+        function mobile() {
+          document.getElementById('mobile_login').style.display = 'block';
+        }
+      </script>
+      <div style="text-align: center;">
+        <a href="Javascript:mobile();" style="font-family: Arial; font-size: 15pt; color: #489CFF; cursor: pointer;"><strong>모바일로 로그인</strong></a>
+      </div>
+      <div id="mobile_login" style="text-align: center; display: none;">
+        <br />
+        <form action="login.php" method="post">
+          <p><input type="password" name="pcd" placeholder="암호 입력" maxlength="4" min="0" max="9999" autocomplete="off" autofocus="on" style="color: black; text-align: center; height: 20px; font-family: Arial;" /></p>
+        </form>
+        <br /><br /><br />
+      </div>
+    </body>
+  </html>

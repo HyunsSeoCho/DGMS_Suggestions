@@ -1,0 +1,12 @@
+* {margin:0; padding:0}
+body {font:15px Verdana,NanumGothic}
+#wrapper {width:1225px; margin:100px auto}
+.sortable {width:1223px; border:2px solid #BCE9B7; border-bottom:none}
+.sortable th {padding:14px 16px 16px; background:#006F00; color:#fff; text-align:left; color:#fff}
+.sortable td {padding:12px 14px 14px; background:#fff; border-bottom:1px solid #BCE9B7}
+.sortable .head {background:#008100 url(images/sort.gif) 6px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .desc {background:#222 url(images/desc.gif) 6px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .asc {background:#222 url(images/asc.gif) 6px  center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .head:hover, .sortable .desc:hover, .sortable .asc:hover {color:#fff}
+.sortable .even td {background:#FFFFDE}
+.sortable .odd td {background:#fff}

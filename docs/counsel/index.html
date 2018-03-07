@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>도곡중학교 신문고</title>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="../../ico/favicon.ico">
+      <script type="text/javascript" src="../../encrypt/logout1200.js"></script>
+      <style type="text/css">
+        body { background-color: #E0FFDB; }
+        div { text-align: center }
+        .timer { font-size:15pt; text-align:right; }
+        .text { text-align: center; font-family: Arial; }
+        .footer { font-size:10pt; font-family: Dotum; color:#888888; }
+      </style>
+    </head>
+    <body>
+      <div class="timer">
+        <strong><span id="counter"> </span> 후 자동 로그아웃</strong> <input type="button" value="연장" onclick="counter_reset()" style="align='center'; height:30px; width:60px; font-size:14px; font-family:NanumGothic;">
+      </div>
+      <div class="text" style="text-size:20pt;">
+        <strong>도곡중학교 온라인 신문고 - 상담예약</strong>
+      </div>
+      <div>
+        <iframe src="https://docs.google.com/forms/d/1JFv2hE65XGpKvdwH_JESCv4tY4C0z1JHOnmRjb-PR6o/viewform?embedded=true#start=embed" width="760" height="1000" frameborder="0" marginheight="0" marginwidth="0">로드 중...</iframe>
+        <p><button onclick="Javascript:location.replace('../../student/');" style="height:30px; width:120px; font-size:14px; font-family:NanumGothic;">이전 화면으로</button></p>
+        <p><button onclick="Javascript:location.replace('../../');" style="height:30px; width:100px; font-size:14px; font-family:NanumGothic;">로그아웃</button></p>
+      </div>
+      <br /><br /><br />
+      <div class="footer">
+        Copyright &copy; Hyunwoo Kim and Hyunseo Cho, All Rights Reserved.
+      </div>
+    </body>
+  </html>
+  <script>
+  counter_init();
+  </script>

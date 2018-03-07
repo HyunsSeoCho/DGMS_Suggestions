@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="/member/logo.ico">
+      <style type="text/css">
+        div.type { text-align: center }
+      </style>
+      <title>UniFive 지원신청서</title>
+    </head>
+    <body bgcolor="#E8FFFF">
+      <table align="center" width="100%" cellpadding="0" cellspacing="0" style="margin-top:10px;">
+        <tr>
+          <td align="center" width="100%" style="font-size:15pt; font-family:NanumGothic;">
+            <h2>UniFive Productions™ 지원 신청서</h2>
+            <img src="2016Logo.jpg" width="300"/><br><br><br>
+            <strong>안녕하십니까?</strong><br>
+            저희를 시간내어 찾아주셔서 감사드립니다.<br>
+            지원을 원하시면 아래 입력란을 모두 채워주십시오.
+          </td>
+        </tr>
+      </table>
+      <br><br><br>
+      <h2>1. 기본 정보 입력</h2>
+      <form method="post" action="./2016registerresult.php">
+        <table border="0" cellspacing="0">
+          <tr>
+            <th align="left">이름</th>
+            <td><input type="text" name="이름" placeholder="이름 입력" size="10"/></td>
+          </tr>
+          <tr>
+            <th align="left">성별</th>
+            <td><input type="radio" name="성별" value="남자" />
+              <label for="woman">남자</label>
+              <input type="radio" name="성별" value="여자" />
+              <label for="man">여자</label>
+            </td>
+          </tr>
+          <tr>
+            <th align="left">생년월일</th>
+            <td><input type="date" name="생년월일" /></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <th align="left">전화번호</th>
+            <td><input type="text" name="전화번호" placeholder="전화번호 입력" size="15"/></td>
+          </tr>
+          <tr>
+            <th align="left">이메일 주소</th>
+            <td><input type="text" name="이메일" placeholder="이메일 주소 입력" size="20"/></td>
+          </tr>
+          <tr>
+            <th align="left">연락 가능한 SNS수단</th>
+            <td>
+              <input type="checkbox" name="SNS" value="카카오톡">
+              <label for="카카오톡">카카오톡</label>
+              <input type="checkbox" name="SNS1" value="메신저">
+              <label for="메신저">메신저(페이스북)</label>
+              <input type="checkbox" name="SNS2" value="스카이프">
+              <label for="스카이프">스카이프</label>
+              <input type="checkbox" name="SNS3" value="행아웃">
+              <label for="행아웃">Google Hangout</label>
+              <input type="checkbox" name="SNS4" value="iMessage">
+              <label for="iMessage">Apple iMessage</label>
+              <input type="checkbox" name="SNS5" value="라인">
+              <label for="라인">라인</label>
+              <input type="checkbox" name="SNS6" value="네이트온">
+              <label for="네이트온">네이트온</label>
+              <input type="checkbox" name="SNS7" value="마이피플">
+              <label for="마이피플">마이피플</label>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <table>
+          <tr>
+            <select name="학교">
+              <option value="도곡중학교">도곡중학교</option>
+            </select>
+          </tr>
+          <br>
+          <tr>
+            <select name="학년">
+              <option value="1학년">1</option>
+            </select>
+          </tr>
+          학년
+          <br>
+          <tr>
+            <select name="반">
+              <option value="1반">1</option>
+              <option value="2반">2</option>
+              <option value="3반">3</option>
+              <option value="4반">4</option>
+              <option value="5반">5</option>
+              <option value="6반">6</option>
+              <option value="7반">7</option>
+              <option value="8반">8</option>
+            </select>
+          </tr>
+          반
+          <br>
+        </table>
+        <br><br>
+        <h2>2. 신청서 작성</h2>
+        <p>
+          <h3>UniFive를 어떻게 알게되셨습니까?</h3>
+            <p><textarea rows="1" cols="50" name="경로" placeholder="예) 지인소개, 전단지 홍보 등"></textarea></p>
+        </p>
+        <p>
+          <h3>지원 동기가 무엇입니까?</h3>
+            <p><textarea rows="2" cols="50" name="동기"></textarea></p>
+        </p>
+        <p>
+          <h3>다룰줄 아는 방송기계가 있습니까?</h3>
+            <p><textarea rows="2" cols="50" name="방송기계" placeholder="예) TBS-9000, 시보기, 앰프, 믹서, 캠코더 등"></textarea></p>
+        </p>
+        <p>
+          <h3>자격증을 취득한 문서 프로그램을 모두 입력하세요.</h3>
+            <p><textarea rows="2" cols="50" name="자격증" placeholder="취득한 장소까지 입력해 주세요"></textarea></p>
+        </p>
+        <p>
+          <h3>앞으로의 다짐은?</h3>
+            <p><textarea rows="5" cols="50" name="다짐"></textarea></p>
+        </p>
+        <p><input type="checkbox" checked="checked"/> 개인정보 활용에 동의 합니다.</p>
+        <br>
+        <p><input type="submit" value="작성완료" /></p>
+      </form>
+      <p>
+        <table align="center" width="100%" cellpadding="0" cellspacing="0" style="margin-top:10px;">
+          <tr>
+          	<td align="center" width="100%" style="font-size:10pt; font-family:Dotum; color:#888888;">
+            	Copyright &copy; UniFive Productions All Rights Reserved.
+          	</td>
+          </tr>
+        </table>
+      </p>
+    </body>
+  </html>

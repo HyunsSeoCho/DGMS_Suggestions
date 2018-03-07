@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <style>
+        td
+        {
+        	white-space:nowrap;
+        	overflow:hidden;
+        	text-overflow:ellipsis;
+        	font-family:arial;
+        	font-size:15px;
+        	vertical-align:middle;
+        }
+
+        .popup_border
+        {
+        	border-top:#AAAAAA 1px solid;
+        	border-left:#AAAAAA 1px solid;
+        	border-right:#464646 1px solid;
+        	border-bottom:#464646 1px solid;
+        }
+
+        .popup_str
+        {
+        	line-height:18px;
+        }
+
+        .popup_bottom
+        {
+        	border-top:#AAAAAA 1px solid;
+        	padding-top:4px;
+        }
+
+        .popup_top
+        {
+        	border-bottom:#AAAAAA 1px solid;
+        	padding-bottom:4px;
+        	padding-top:4px;
+        }
+
+        #popup .window
+        {
+        	position:absolute;
+        	left:0;
+        	top:0;
+        	display:none;
+        	z-index:9999;
+        	padding:0px;
+        }
+
+        #popup_modal .window_modal
+        {
+        	position:absolute;
+        	left:0;
+        	top:0;
+        	display:none;
+        	z-index:99999;
+        	padding:0px;
+        }
+      </style>
+    </head>
+    <body bgcolor="#EAEAEA">
+      <div id="popup_modal">
+        <div class="window_modal" style="top: 20%; left: 30%; display: block;">
+          <table width="421" height="89" cellspacing="0" cellpadding="0" border="0" bgcolor="#EFEEEB" class="popup_border">
+            <tbody>
+              <tr>
+                <td>
+                  <table align="center" width="399" height="89">
+                    <tbody>
+                      <tr>
+                        <td align="left" style="font-weight:bold;padding-left:5px;" width="68">
+                          <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                              <tr height="59">
+                                <td width="14">
+                                  <img src="../../../ico/notice.gif" style="position:relative;top:0px;">
+                                </td>
+                                <td style="font-weight:bold;">
+                                  알림
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                        <td align="left" class="popup_str">
+                          입력하신 정보가 일치하지 않습니다.
+                        </td>
+                      </tr>
+                      <tr height="28">
+                        <td align="right" colspan="2" class="popup_bottom">
+                          <span onclick="location.replace('../');" style="cursor:pointer;">
+                            <img src="../../../ico/close.gif" style="position:relative;top:2px;" border="0">
+                             닫기
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+  </html>
